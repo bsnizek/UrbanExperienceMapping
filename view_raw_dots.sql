@@ -21,7 +21,7 @@ CREATE MATERIALIZED VIEW raw_dots AS
   SELECT
     nextval('dots_guid_seq'::regclass) AS guid,
     *
-  from pre_dots;
+  from pre_dots WHERE geom is not null;
 
 DROP INDEX IF EXISTS gidx_raw_dots;
 CREATE INDEX gidx_raw_dots ON raw_dots USING GIST (geom);

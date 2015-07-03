@@ -1,5 +1,5 @@
 DROP MATERIALIZED VIEW IF EXISTS dots;
-CREATE MATERIALIZED VIEW dots AS
+CREATE MATERIALIZED VIEW dots0 AS
   SELECT
     guid,
     geom,
@@ -30,8 +30,8 @@ CREATE MATERIALIZED VIEW dots AS
     getOverlapWithinBuffer(geom, 49.999, 'o_green_areas') as frac_green_areas,
     getDistanceToNearest(geom, 'm_traffic_signals') AS dist_green_area,
     -- add lateral squares here
-    getRasterValue(geom, 'p_terrain_slope') AS slope,
-    getRasterValue(geom, 'p_terrain_topo') AS eleveation,
+    -- getRasterValue(geom, 'p_terrain_slope') AS slope,
+    -- getRasterValue(geom, 'p_terrain_topo') AS eleveation,
     countFeaturesWithinBuffer(geom, 49.999, 'q_parking') AS n_parking,
     getDistanceToNearest(geom, 'q_parking') AS dist_parking,
     getDistanceToNearest(geom, 'r_oneways') AS dist_oneway,
