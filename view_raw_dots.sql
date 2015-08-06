@@ -1,3 +1,4 @@
+SET client_min_messages TO WARNING;
 DROP MATERIALIZED VIEW IF EXISTS raw_dots CASCADE;
 DROP MATERIALIZED VIEW IF EXISTS pre_dots CASCADE;
 
@@ -8,14 +9,18 @@ CREATE MATERIALIZED VIEW pre_dots AS
   SELECT
     geom::geometry,
     true::bool AS is_experience,
-    respondent as route_id
+    image_name,
+    name as route_id
   FROM points_projected
   UNION
   SELECT
     geom::geometry,
     false::bool AS is_experience,
+    '' AS image_name,
     route_id AS route_id
   FROM non_experience_points;
+
+-- ===== ===== ===== ===== ===== ===== ===== ===== =====
 
 CREATE MATERIALIZED VIEW raw_dots AS
   SELECT

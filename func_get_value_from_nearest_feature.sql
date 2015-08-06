@@ -1,4 +1,6 @@
-CREATE OR REPLACE FUNCTION getValueFromNearestFeatureVarchar(dot geometry, indicator_table_name varchar, field_name varchar)
+CREATE OR REPLACE FUNCTION getValueFromNearestFeatureVarchar(dot geometry,
+                                                             indicator_table_name varchar,
+                                                             field_name varchar)
   RETURNS VARCHAR AS
   $BODY$DECLARE
 

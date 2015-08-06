@@ -6,7 +6,10 @@
 -- (c) Bernhard Snizek, informal.city, b@snizek.com
 --
 --  --
-DROP TYPE geometry_distance;
+SET client_min_messages TO WARNING;
+
+DROP TYPE IF EXISTS geometry_distance CASCADE;
+
 CREATE TYPE geometry_distance AS (
   geom geometry,
   dist float

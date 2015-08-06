@@ -3,7 +3,9 @@
 --
 --
 -- --
-CREATE OR REPLACE FUNCTION getProjectedPointOnRespectiveRoute(p geometry, dot_name varchar, route_id_field_name varchar)
+CREATE OR REPLACE FUNCTION getProjectedPointOnRespectiveRoute(p geometry,
+                                                              dot_name varchar,
+                                                              route_id_field_name varchar)
   RETURNS geometry AS
   $BODY$DECLARE
 
@@ -13,7 +15,11 @@ CREATE OR REPLACE FUNCTION getProjectedPointOnRespectiveRoute(p geometry, dot_na
 
   BEGIN
 
+    RAISE NOTICE '--';
+
     s := s || 'SELECT geom FROM routes WHERE ' || route_id_field_name || ' = ' || q || dot_name || q || ' LIMIT 1';
+
+    RAISE NOTICE '%', s;
 
     EXECUTE s INTO g;
 
